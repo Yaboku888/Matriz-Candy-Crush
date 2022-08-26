@@ -8,7 +8,7 @@ public class Cuboo : MonoBehaviour
     public int ancho;
     public Tile[,] board;
     public GameObject perfile;
-    public Transform cameraPlayer;
+    public Camera cameraPlayer;
     void CreateBoard()
     {
         board = new Tile[ancho, alto];
@@ -22,12 +22,18 @@ public class Cuboo : MonoBehaviour
                 go.transform.position = new Vector3(i, j, 0);
                 Tile tile = go.GetComponent<Tile>();
                 tile.inicialization(i, j);
-                board[j, i] = tile;
+                board[i, j] = tile;
 
                 cameraPlayer.transform.localPosition = new Vector3(i / 2, j / 2, -1);
-
+                cameraPlayer.orthographicSize = (float)alto / 2;
 
             }
         }
     }
+
+   
+
+
 }
+
+
