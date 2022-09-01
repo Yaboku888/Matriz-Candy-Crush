@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    Tile incial;
+    Tile final;
     public int indicex;
     public int indicey;
 
@@ -13,4 +15,22 @@ public class Tile : MonoBehaviour
         indicex = x;
         indicey = y;
     }
+
+
+    private void OnMouseDown()
+    {
+        
+    }
+
+    private void OnMouseEnter()
+    {
+        
+    }
+
+    private void OnMouseUp()
+    {
+        
+    }
+
+
 }
