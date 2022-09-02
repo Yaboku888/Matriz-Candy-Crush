@@ -12,7 +12,8 @@ public class Cuboo : MonoBehaviour
     public GameObject[] prefpuntos;
     public GamePeace[,] pieza;
     public float borde;
-
+    Tile inicial;
+    Tile Final;
     void Start()
     {
         llenarMatriz();
@@ -24,12 +25,12 @@ public class Cuboo : MonoBehaviour
     {
         board = new Tile[ancho, alto];
 
-        for (int i= 0; i < alto; i++)
+        for (int i = 0; i < ancho; i++) //i para x
         {
-            for (int j = 0; j <ancho; j++)
+            for (int j = 0; j < alto; j++) //j para y
             {
                 GameObject go = Instantiate(perfile);
-                go.name = "Tile("+i+", "+j+")";
+                go.name = "Tile(" + i + ", " + j + ")";
                 go.transform.position = new Vector3(i, j, 0);
                 Tile tile = go.GetComponent<Tile>();
                 tile.inicialization(i, j);
@@ -42,8 +43,8 @@ public class Cuboo : MonoBehaviour
         }
     }
 
-   
-   void organizar ()
+
+    void organizar()
     {
         float b = ((float)ancho / 2f + borde) / ((float)Screen.width / (float)Screen.height);
         float a = ((float)alto / 2f + borde);
@@ -56,7 +57,7 @@ public class Cuboo : MonoBehaviour
         else
         {
             cameraPlayer.orthographicSize = b;
-        
+
         }
     }
 
@@ -64,7 +65,7 @@ public class Cuboo : MonoBehaviour
     {
         int numeroA = Random.Range(0, prefpuntos.Length);
         GameObject go = Instantiate(prefpuntos[numeroA]);
-        return go; 
+        return go;
     }
 
     void UbicarPieza(GamePeace gp, int x, int y)
@@ -74,7 +75,7 @@ public class Cuboo : MonoBehaviour
 
     void llenarMatriz()
     {
-        for (int i = 0; i< ancho; i++)
+        for (int i = 0; i < ancho; i++)
         {
             for (int g = 0; g < alto; g++)
             {
@@ -84,6 +85,30 @@ public class Cuboo : MonoBehaviour
         }
     }
 
+    public void SetInicialMause(Tile ini)
+    {
+        if (inicial = null)
+        {
+            inicial = ini;
+        }
+
+    }
+    public void SetFinalTile(Tile fin)
+    {
+        if (inicial != null)
+        {
+            Final = fin;
+        }
+    }
+    public void ReleaseTile()
+    {
+        if(inicial!=null&&Final!=null)
+        {
+            inicial = null;
+            Final = null;
+        }
+    }
 }
+
 
 

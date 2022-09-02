@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     Tile final;
     public int indicex;
     public int indicey;
+    Cuboo g;
 
 
     public  void inicialization (int x, int y)
@@ -19,17 +20,17 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+        g.SetInicialMause(this);
     }
 
     private void OnMouseEnter()
     {
-        
+        g.SetFinalTile(this);
     }
 
     private void OnMouseUp()
     {
-        
+        g.ReleaseTile();
     }
 
 
